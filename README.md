@@ -1,6 +1,5 @@
-# prueba-alianza
-Prueba práctica ingeniero Fullstack Alianza
-
+# Prueba Alianza
+Prueba práctica ingeniero Fullstack Alianza fiduciaria y valores.
 
 # Descripción 
 
