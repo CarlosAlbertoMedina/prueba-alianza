@@ -1,4 +1,4 @@
-# Prueba GML - Alianza
+# Prueba GML - Alianza Backend
 Prueba práctica ingeniero Fullstack Alianza fiduciaria y valores.
 
 # Descripción 
