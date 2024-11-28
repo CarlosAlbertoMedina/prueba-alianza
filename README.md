@@ -1,2 +1,2 @@
 # prueba-alianza
-Preuba práctica ingeniero Fullstack Alianza
+Prueba práctica ingeniero Fullstack Alianza
