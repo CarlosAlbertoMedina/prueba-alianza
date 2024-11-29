@@ -14,3 +14,24 @@ Se debe hacer un servicio rest que permita consultar, buscar por shared key y cr
 NOTA: Este punto es opcional, no es necesario hacerlo, pero proporciona puntos extras.
 - Implementar la funcionalidad del buscador avanzado (botón advanced search), tanto en la parte front como en el servicio.
 - Implementar la opción de Exportar (ver botón en la primera pantalla) hacia un archivo csv. 
+
+# Tecnologias utilizadas
+Java 21
+Spring 3.4.0
+JUnit 5 para pruebas unitarias
+Base de datos H2 en memoria 
+Maven para la gestión de dependencias y construcción del proyecto
+
+# Como correr el proyector 
+Ejecutar la clase (Run) PruebaAlianzaApplication
+el servidor corre por el puerto: 8080
+Swagger: http://localhost:8080/swagger-ui/index.html
+Json de ejemplo:
+{
+  "businessId": "carlos medina",
+  "email": "cliente@empresa.com",
+  "phoneNumber": "1234567890",
+  "dataAdded": "2024-11-29",
+  "startDate": "2024-11-01",
+  "endDate": "2024-12-31"
+}
