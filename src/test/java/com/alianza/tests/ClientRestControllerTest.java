@@ -68,7 +68,7 @@ public class ClientRestControllerTest {
         PageRequest pageRequest = PageRequest.of(0, 10);
         Page<Client> clientPage = mock(Page.class);
         when(listClientsUseCase.listClients(pageRequest, null)).thenReturn(clientPage);
-        Page<Client> result = clientRestController.listClients(0, 10, null);
+        Page<Client> result = clientRestController.listClients(0, 10, null, null, null, null, null);
         assertNotNull(result);
         verify(listClientsUseCase, times(1)).listClients(pageRequest, null);
     }

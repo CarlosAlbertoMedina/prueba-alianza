@@ -38,7 +38,7 @@ public class ClientMapper {
         client.setBusinessId(clientDTO.getBusinessId());
         client.setEmail(clientDTO.getEmail());
         client.setPhoneNumber(clientDTO.getPhoneNumber());
-        client.setDataAdded(this.convertStringToDate(clientDTO.getDataAdded()));
+        client.setDataAdded(new Date());
         client.setStartDate(this.convertStringToDate(clientDTO.getStartDate()));
         client.setEndDate(this.convertStringToDate(clientDTO.getEndDate()));
         return client;

@@ -15,6 +15,4 @@ public interface JpaClientRepository extends JpaRepository<Client, Long> {
             "LOWER(c.phoneNumber) LIKE LOWER(CONCAT('%', :searchQuery, '%')))")
     Page<Client> findBySearchQuery(String searchQuery, Pageable pageable);
 
-    boolean existsByBusinessId(String businessId);
-
 }

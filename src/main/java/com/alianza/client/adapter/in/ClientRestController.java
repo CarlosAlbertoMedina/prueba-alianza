@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/clients")
@@ -65,8 +67,25 @@ public class ClientRestController {
     public Page<Client> listClients(
             @Parameter(description = "Page number", required = true) @RequestParam int page,
             @Parameter(description = "Page size", required = true) @RequestParam int size,
-            @Parameter(description = "Optional search query") @RequestParam(required = false) String searchQuery) {
-        return listClientsUseCase.listClients(PageRequest.of(page, size), searchQuery);
+            @Parameter(description = "Optional search query") @RequestParam(required = false) String searchQuery,
+            @Parameter(description = "Optional sharedKey filter") @RequestParam(required = false) String sharedKey,
+            @Parameter(description = "Optional businessId filter") @RequestParam(required = false) String businessId,
+            @Parameter(description = "Optional email filter") @RequestParam(required = false) String email,
+            @Parameter(description = "Optional phone filter") @RequestParam(required = false) String phone) {
+
+        // Llamar al caso de uso para obtener la lista de clientes
+        Page<Client> clientsPage = listClientsUseCase.listClients(PageRequest.of(page, size), searchQuery);
+
+        // Filtrar los resultados en memoria con lambdas si los filtros son proporcionados
+        List<Client> filteredClients = clientsPage.getContent().stream()
+                .filter(client -> (sharedKey == null || client.getSharedKey().contains(sharedKey)))
+                .filter(client -> (businessId == null || client.getBusinessId().contains(businessId)))
+                .filter(client -> (email == null || client.getEmail().contains(email)))
+                .filter(client -> (phone == null || client.getPhoneNumber().contains(phone)))
+                .collect(Collectors.toList());
+
+        // Crear un nuevo Page con los clientes filtrados
+        return new PageImpl<>(filteredClients, PageRequest.of(page, size), filteredClients.size());
     }
 
     @Operation(
