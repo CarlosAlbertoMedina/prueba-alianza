@@ -27,5 +27,6 @@ IDE InteliJ
 - Ejecutar la clase (Run) PruebaAlianzaApplication
 - el servidor corre por el puerto: 8080
 - Swagger: http://localhost:8080/swagger-ui/index.html
+  
   ![image](https://github.com/user-attachments/assets/37a53148-6146-46cf-a8d5-7ba2f463f64e)
 
